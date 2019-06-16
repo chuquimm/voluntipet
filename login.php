@@ -30,8 +30,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<p>Ayudar nunca fue tan fácil</p>
 				<div class="content3">
 					<ul>
-						<li><a class="" href="index.html"> VOLVER</a></li>
-						<li><a class="read" href="dashboard\casos.html">INICIA SESIÓN</a></li>
+						<li><a class="" href="index.php"> VOLVER</a></li>
+						<li><a class="read" href="dashboard\casos.php">INICIA SESIÓN</a></li>
 					</ul>
 				</div>
 			</div>

@@ -4,6 +4,20 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
+<?php
+  	require_once("funciones/funciones.php");
+  
+  	if(isset($_POST['name'])) {	
+		$foto = null;
+		
+		$conexion = abrirConexion();
+		$consulta = "INSERT INTO casos (nombre, email, telefono, direccion, dia_encontrado, foto, detalles) ";
+	  	$consulta.= "VALUES ('".$_POST['name']."', '".$_POST['email']."', '".$_POST['telefono']."', '".$_POST['direccion']."', '".$_POST['dia_encontrado']."', '".$foto."', '".$_POST['detalles']."')";
+		$caso = transaction($conexion, $consulta);
+		cerrarConexion($conexion);
+	}
+
+?>
 <html>
 <head>
 <title>Volunti PET | Registro de Casos</title>
@@ -23,14 +37,14 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <h2>REGISTRO DE CASOS</h2>
 <p>Ayudar nunca fue tan fácil.</p>
 <div class="w3ls-form">
-<form action="#" method="post">
+<form action="registrodecasos.php" method="POST" enctype="multipart/form-data">
 <ul class="fields">
 <div class="Refer_w3l">
 	<h3>DATOS DEL CASO</h3>
 	<li>	
 		<label class="w3ls-opt">Nombre<span class="w3ls-star"> * </span></label>
 		<div class="w3ls-name">	
-			<input type="text" name="username"  placeholder="Para nuestro amigo por ayudar" required=" "/>
+			<input type="text" name="name"  placeholder="Para nuestro amigo por ayudar" required=" "/>
 		</div>
 	</li>
 	<li>
@@ -44,31 +58,31 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<li>
 		<label class="w3ls-opt">Número de Teléfono<span class="w3ls-star"> * </span></label>	
 			<span class="w3ls-text w3ls-name">
-				<input type="text" name="phone number" placeholder="" required=""/>
+				<input type="text" name="telefono" placeholder="" required=""/>
 			</span>
 	</li>
 	<li>
 		<label class="w3ls-opt">Lugar<span class="w3ls-star"> * </span></label>	
 			<span class="w3ls-text w3ls-name">
-				<input type="text" name="phone number" placeholder="" required=""/>
+				<input type="text" name="direccion" placeholder="" required=""/>
 			</span>
 	</li>
 	<li>
 		<label class="w3ls-opt">Día encontrado<span class="w3ls-star"> * </span></label>	
 			<span class="w3ls-text w3ls-name">
-				<input type="date" name="phone number" placeholder="" required=""/>
+				<input type="date" name="dia_encontrado" placeholder="" required=""/>
 			</span>
 	</li>
 	<li>
 		<label class="w3ls-opt">Inserte Foto<span class="w3ls-star"> * </span></label>	
 			<span class="w3ls-text w3ls-name">
-				<input type="file"/>
+				<input type="file" name="foto" accept="image/*"/>
 			</span>
 	</li>
 	</div>
 	<div class="input">
 		<label class="w3ls-opt1">Detalles del Caso</label>
-		<span class="w3ls-input"><textarea placeholder=""></textarea></span>
+		<span class="w3ls-input"><textarea placeholder="" name="detalles"></textarea></span>
 	</div>
 </ul>
 <div class="clear"></div>

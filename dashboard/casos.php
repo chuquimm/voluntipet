@@ -1,3 +1,7 @@
+<?php
+  require_once("../funciones/funciones.php");
+  $conexion = abrirConexion();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -32,14 +36,14 @@
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="../index.html" class="simple-text logo-normal">
+        <a href="../index.php" class="simple-text logo-normal">
           Volunti PET
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="casos.html">
+            <a class="nav-link" href="casos.php">
               <i class="material-icons">pets</i>
               <p>Casos</p>
             </a>
@@ -59,7 +63,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="btn btn-danger" href="../registrodecasos.html">Registra un caso</a>
+            <a class="btn btn-danger" href="../registrodecasos.php">Registra un caso</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -75,7 +79,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../index.html">
+                <a class="nav-link" href="../index.php">
                   Cerrar sesión
                 </a>
               </li>
@@ -112,48 +116,30 @@
                                     Fecha de registro
                                   </td>
                                   <td class="text-right">
-                                    Voluntarios
+                                    Actualizaciones
                                   </td>
                                 </tr>
-                                <tr>
-                                  <td>
-                                    <div class="flag">
-                                      <img src="./assets/img/flags/US.png">
-                                  </div></td>
-                                  <td><a href="caso.html">Calvin</a></td>
-                                  <td class="text-right">
-                                    <a href="caso.html">21 de mayo</a>
-                                  </td>
-                                  <td class="text-right">
-                                    <a href="caso.html">0</a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="flag">
-                                      <img src="./assets/img/flags/DE.png">
-                                  </div></td>
-                                  <td>Angus</td>
-                                  <td class="text-right">
-                                    20 de mayo
-                                  </td>
-                                  <td class="text-right">
-                                    3
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="flag">
-                                      <img src="./assets/img/flags/AU.png">
-                                  </div></td>
-                                  <td>Ares</td>
-                                  <td class="text-right">
-                                    18 de mayo
-                                  </td>
-                                  <td class="text-right">
-                                    5
-                                  </td>
-                                </tr>
+                                <?php
+                                $consulta = "SELECT casos.id, casos.nombre, casos.dia_encontrado, (SELECT count(actualizacion.casos_idcasos) FROM actualizacion WHERE actualizacion.casos_idcasos = casos.id) AS actividades FROM casos";
+                                $resultado = queries($conexion, $consulta);
+                                foreach ($resultado as $columna) {
+                                  echo '
+                                  <tr>
+                                    <td>
+                                      <div class="flag">
+                                        <img src="./assets/img/flags/US.png">
+                                    </div></td>
+                                    <td><a href="caso.php">'.$columna['nombre'].'</a></td>
+                                    <td class="text-right">
+                                      <a href="caso.php">'.$columna['dia_encontrado'].'</a>
+                                    </td>
+                                    <td class="text-right">
+                                      <a href="caso.php">'.$columna['actividades'].'</a>
+                                    </td>
+                                  </tr>
+                                  ';
+                                }
+                                ?>
                               </tbody>
                             </table>
                             </div>
@@ -682,10 +668,15 @@
                           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+        <?php
+          $consulta = "SELECT casos.id, casos.nombre, casos.dia_encontrado, casos.direccion, casos.detalles  FROM casos";
+          $resultado = queries($conexion, $consulta);
+          foreach ($resultado as $columna) {
+            echo '
+            <div class="col-md-4">
             <div class="card card-product" data-count="9">
               <div class="card-header card-header-image" data-header-animation="true">
-                <a href="caso.html">
+                <a href="caso.php">
                   <img class="img" src="./assets\img\perros\1.jpg">
                 </a>
               </div>
@@ -702,93 +693,23 @@
                   </button>
                 </div>
                 <h4 class="card-title">
-                  <a href="caso.html">Calvin</a>
+                  <a href="caso.php">'.$columna['nombre'].'</a>
                 </h4>
-                <div class="card-description">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </div>
+                <div class="card-description">'.$columna['detalles'].'</div>
               </div>
               <div class="card-footer">
                 <div class="price">
-                  <h4>21 de mayo</h4>
+                  <h4>'.$columna['dia_encontrado'].'</h4>
                 </div>
                 <div class="stats">
-                  <p class="card-category"><i class="material-icons">place</i> Barcelona, Spain</p>
+                  <p class="card-category"><i class="material-icons">place</i> '.$columna['direccion'].'</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card card-product" data-count="14">
-              <div class="card-header card-header-image" data-header-animation="true">
-                <a href="caso.html">
-                  <img class="img" src="./assets\img\perros\22.jpg">
-                </a>
-              </div>
-              <div class="card-body">
-                <div class="card-actions text-center">
-                  <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                    <i class="material-icons">build</i> Fix Header!
-                  </button>
-                  <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="" data-original-title="View">
-                    <i class="material-icons">art_track</i>
-                  </button>
-                  <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="" data-original-title="Edit">
-                    <i class="material-icons">add_alert</i>
-                  </button>
-                </div>
-                <h4 class="card-title">
-                  <a href="caso.html">Angus</a>
-                </h4>
-                <div class="card-description">
-                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="price">
-                  <h4>20 de mayo</h4>
-                </div>
-                <div class="stats">
-                  <p class="card-category"><i class="material-icons">place</i> London, UK</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card card-product" data-count="5">
-              <div class="card-header card-header-image" data-header-animation="true">
-                <a href="caso.html">
-                  <img class="img" src="./assets\img\perros\3.jpg">
-                </a>
-              </div>
-              <div class="card-body">
-                <div class="card-actions text-center">
-                  <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                    <i class="material-icons">build</i> Fix Header!
-                  </button>
-                  <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="" data-original-title="View">
-                    <i class="material-icons">art_track</i>
-                  </button>
-                  <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="" data-original-title="Edit">
-                    <i class="material-icons">add_alert</i>
-                  </button>
-                </div>
-                <h4 class="card-title">
-                  <a href="caso.html">Ares</a>
-                </h4>
-                <div class="card-description">
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="price">
-                  <h4>18 de mayo</h4>
-                </div>
-                <div class="stats">
-                  <p class="card-category"><i class="material-icons">place</i> Milan, Italy</p>
-                </div>
-              </div>
-            </div>
+          ';
+          }
+          ?>
           </div>
         </div>
       </div>

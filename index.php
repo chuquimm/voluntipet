@@ -44,7 +44,7 @@
                         <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
       </button>
-                        <a class="navbar-brand mx-auto" href="index.html">VOLUNTI <span data-blast="color" style="color: rgb(255, 50, 46);">PET</span></a>
+                        <a class="navbar-brand mx-auto" href="index.php">VOLUNTI <span data-blast="color" style="color: rgb(255, 50, 46);">PET</span></a>
                         <div class="navbar-collapse collapse" id="navbarCollapse1" style="">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item active"> <a class="nav-link" href="#myCarousel" data-blast="color" style="color: rgb(255, 50, 46);">INICIO<span class="sr-only">(current)</span></a> </li>
@@ -52,8 +52,8 @@
                                 <li class="nav-item"> <a class="nav-link" href="#casos">CASOS</a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#comunidad">COMUNIDAD</a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#nosotros">NOSOTROS</a> </li>
-                                <li class="nav-item"> <a class="nav-link" href="registrodecasos.html">AYÚDANOS</a> </li>
-                                <li class="nav-item"> <a class="nav-link" href="login.html"><b>SÉ VOLUNTARIO</b></a> </li>
+                                <li class="nav-item"> <a class="nav-link" href="registrodecasos.php">AYÚDANOS</a> </li>
+                                <li class="nav-item"> <a class="nav-link" href="login.php"><b>SÉ VOLUNTARIO</b></a> </li>
                             </ul>
                         </div>
                     </div>
@@ -250,7 +250,7 @@
                         </div>
                     </div>
                     <div class="log-in mt-md-4 mt-3">
-                            <a class="btn btn-lg text-uppercase" data-blast="bgColor" href="registrodecasos.html" style="background-color: rgb(255, 50, 46);">ENVIANOS TU CASO</a>
+                            <a class="btn btn-lg text-uppercase" data-blast="bgColor" href="registrodecasos.php" style="background-color: rgb(255, 50, 46);">ENVIANOS TU CASO</a>
                         </div>
                     <div class="clearfix"> </div>
                 </div>

@@ -32,14 +32,14 @@
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="../index.html" class="simple-text logo-normal">
+        <a href="../index.php" class="simple-text logo-normal">
           Volunti PET
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="casos.html">
+            <a class="nav-link" href="casos.php">
               <i class="material-icons">pets</i>
               <p>Casos</p>
             </a>
@@ -74,7 +74,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../index.html">
+                <a class="nav-link" href="../index.php">
                   Cerrar sesión
                 </a>
               </li>
