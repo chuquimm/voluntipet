@@ -669,7 +669,7 @@
         </div>
         <div class="row">
         <?php
-          $consulta = "SELECT casos.id, casos.nombre, casos.dia_encontrado, casos.direccion, casos.detalles  FROM casos";
+          $consulta = "SELECT casos.id, casos.nombre, casos.dia_encontrado, casos.direccion, casos.detalles, casos.foto  FROM casos";
           $resultado = queries($conexion, $consulta);
           foreach ($resultado as $columna) {
             echo '
@@ -677,7 +677,7 @@
             <div class="card card-product" data-count="9">
               <div class="card-header card-header-image" data-header-animation="true">
                 <a href="caso.php">
-                  <img class="img" src="./assets\img\perros\1.jpg">
+                  <img class="img" src="'.$columna['foto'].'">
                 </a>
               </div>
               <div class="card-body">

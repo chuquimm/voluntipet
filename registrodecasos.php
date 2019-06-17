@@ -5,10 +5,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <?php
-  	require_once("funciones/funciones.php");
+	require_once("funciones/funciones.php");
   
   	if(isset($_POST['name'])) {	
 		$foto = null;
+
+
+		if (isset($_FILES['foto'])) {
+			$nombre = $_FILES['foto']['name'];
+			$temp = $_FILES['foto']['tmp_name'];
+			$extesion = explode('.', $nombre);
+			$extesion = strtolower(end($extesion));
+			$destino = uniqid('', false).'.'.$extesion;
+
+			if (move_uploaded_file($temp,$destino)) {
+				$foto = "../".$destino;
+			} else {
+				$foto = "./assets/img/perros/1.jpg";
+			}
+		}
 		
 		$conexion = abrirConexion();
 		$consulta = "INSERT INTO casos (nombre, email, telefono, direccion, dia_encontrado, foto, detalles) ";
