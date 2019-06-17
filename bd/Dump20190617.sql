@@ -60,7 +60,7 @@ CREATE TABLE `casos` (
   `telefono` varchar(9) DEFAULT NULL,
   `direccion` varchar(255) DEFAULT NULL,
   `dia_encontrado` date DEFAULT NULL,
-  `foto` longblob,
+  `foto` longtext,
   `detalles` longtext,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
@@ -72,7 +72,7 @@ CREATE TABLE `casos` (
 
 LOCK TABLES `casos` WRITE;
 /*!40000 ALTER TABLE `casos` DISABLE KEYS */;
-INSERT INTO `casos` VALUES (1,'Bonbon','marcoschuquicondor@gmail.com','968574123','Urb. Las Mercedes Mz K 27','2017-12-30','','Parece que ha sido abandonado');
+INSERT INTO `casos` VALUES (1,'Bonbon','marcoschuquicondor@gmail.com','968574123','Urb. Las Mercedes Mz K 27','2017-12-30','./assets/img/perros/1.jpg','Parece que ha sido abandonado');
 /*!40000 ALTER TABLE `casos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,4 +224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-16 10:11:31
+-- Dump completed on 2019-06-17 17:33:44
